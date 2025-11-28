@@ -2,20 +2,20 @@ package com.powerjasper.carlease.controller;
 
 import com.powerjasper.carlease.model.Customer;
 import com.powerjasper.carlease.service.CustomerService;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@Validated
-@AllArgsConstructor
 public class CustomerController {
+    @Autowired
     private CustomerService customerService;
 
     @GetMapping("/customers")
+    @PreAuthorize("hasRole('CUSTOMERS')")
     public ResponseEntity<List<Customer>> getAllCustomers() {
         return ResponseEntity.ok(customerService.getAllCustomers());
     }
