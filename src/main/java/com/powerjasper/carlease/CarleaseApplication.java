@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CarleaseApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CarleaseApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(CarleaseApplication.class, args);
+  }
 }

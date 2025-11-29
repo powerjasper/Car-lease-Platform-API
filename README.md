@@ -2,9 +2,7 @@
 
 
 TODO must:
-- Basic auth
 - basic car attributes
-- validate all endpoints using the basic auth
 - javadoc
 - unit tests
 - Apply google java style guide

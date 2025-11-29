@@ -8,12 +8,12 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class Customer {
-    private Long id;
-    private String name;
-    private String street;
-    private String houseNumber;
-    private String zipCode;
-    private String place;
-    private String emailAddress;
-    private String phoneNumber;
+  private Long id;
+  private String name;
+  private String street;
+  private String houseNumber;
+  private String zipCode;
+  private String place;
+  private String emailAddress;
+  private String phoneNumber;
 }

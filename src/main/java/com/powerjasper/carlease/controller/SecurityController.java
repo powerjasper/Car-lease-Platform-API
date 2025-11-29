@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SecurityController {
-    @Autowired
-    private JwtUtil jwtUtils;
+  @Autowired private JwtUtil jwtUtils;
 
-    @GetMapping("/signin/{username}")
-    public String authenticateUser(@PathVariable String username) {
-        return jwtUtils.generateToken(username);
-    }
+  @GetMapping("/signin/{username}")
+  public String authenticateUser(@PathVariable String username) {
+    return jwtUtils.generateToken(username);
+  }
 }
