@@ -4,13 +4,17 @@ import com.powerjasper.carlease.entity.CarEntity;
 import com.powerjasper.carlease.mapper.CarMapper;
 import com.powerjasper.carlease.model.Car;
 import com.powerjasper.carlease.repository.CarRepository;
+
 import java.util.List;
+
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class CarService {
   private final CarRepository carRepository;
