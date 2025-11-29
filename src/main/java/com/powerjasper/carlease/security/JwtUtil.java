@@ -21,23 +21,35 @@ public class JwtUtil {
 
   private SecretKey key;
 
+  /**
+   * Adds broker or leaser role to the user claims if the correct username is used, otherwise assign
+   * no roles. Done this way since there is no actual iam connection
+   *
+   * @param username the user for which to find claims
+   * @return Claims assigned to the give username
+   */
+  private static Map<String, Object> getUserClaims(String username) {
+    Map<String, Object> claims = new HashMap<>();
+    if (Objects.equals(username, "broker")) {
+      claims.put("Roles", List.of("ROLE_BROKER"));
+    } else if (Objects.equals(username, "leaser")) {
+      claims.put("Roles", List.of("ROLE_LEASER"));
+    } else {
+      claims.put("Roles", Collections.EMPTY_LIST);
+    }
+    return claims;
+  }
+
   @PostConstruct
   public void init() {
     this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
   }
 
   public String generateToken(String username) {
-    Map<String, Object> claims = new HashMap<>();
-    if (Objects.equals(username, "jasper")) {
-      claims.put("Roles", List.of("ROLE_CUSTOMERS"));
-    } else {
-      claims.put("Roles", Collections.EMPTY_LIST);
-    }
-
     return Jwts.builder()
         .setSubject(username)
         .setIssuedAt(new Date())
-        .addClaims(claims)
+        .addClaims(getUserClaims(username))
         .setExpiration(new Date((new Date()).getTime() + expiration))
         .signWith(key)
         .compact();

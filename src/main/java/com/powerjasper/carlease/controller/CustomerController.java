@@ -14,22 +14,25 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/customers")
-    @PreAuthorize("hasRole('CUSTOMERS')")
+    @PreAuthorize("hasRole('BROKER')")
     public ResponseEntity<List<Customer>> getAllCustomers() {
         return ResponseEntity.ok(customerService.getAllCustomers());
     }
 
     @GetMapping("/customers/{id}")
+    @PreAuthorize("hasRole('BROKER')")
     public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
         return ResponseEntity.ok(customerService.getById(id));
     }
 
     @PutMapping("/customers/{id}")
+    @PreAuthorize("hasRole('BROKER')")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
         return ResponseEntity.ok(customerService.updateById(id, customer));
     }
 
     @DeleteMapping("/customers/{id}")
+    @PreAuthorize("hasRole('BROKER')")
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         customerService.deleteById(id);
         return ResponseEntity.noContent().build();
