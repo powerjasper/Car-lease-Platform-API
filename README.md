@@ -6,6 +6,10 @@ In intellij:\
 The application can be started using `mvn spring-boot:run`\
 Or by pressing the play button in CarleaseApplication.java
 
+The application uses a postgresql database\
+The postgresql database runs in a separate container.\
+This container should automatically start when running the application\
+The database should automatically be filled with some testing data on launch.
 
 ## Authentication
 Within the authentication in the application roles get added to the jwt.\
