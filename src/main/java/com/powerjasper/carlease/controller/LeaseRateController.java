@@ -21,7 +21,7 @@ public class LeaseRateController {
     @Operation(summary = "Calculate lease rate", description = "Calculate leaserate based on given properties")
     @ApiResponse()
     @PostMapping("/leaseRate")
-    @PreAuthorize("hasRole('LEASER')")
+    @PreAuthorize("hasRole('BROKER')")
     public ResponseEntity<LeaseRateResponse> calculateLeaseRate(@RequestBody LeaseRateRequest leaseRateRequest){
         return ResponseEntity.ok(leaseRateService.calculateLeaseRate(leaseRateRequest));
     }
